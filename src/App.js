@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person';
 import Radium, { StyleRoot } from 'radium';
+import Person from './Person/Person';
 
 class App extends Component {
   state = {
@@ -23,7 +23,7 @@ class App extends Component {
       ...this.state.persons[personIndex]
     };
 
-    //const person = Object.assign({}, this.state.persons[pesonIndex])
+    // const person = Object.assign({}, this.state.persons[personIndex]);
 
     person.name = event.target.value;
 
@@ -31,23 +31,21 @@ class App extends Component {
     persons[personIndex] = person;
 
     this.setState({ persons: persons });
-
   }
 
   deletePersonHandler = (personIndex) => {
-    //const persons = this.state.persons.slice();
+    // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
-    this.setState({ persons: persons })
+    this.setState({ persons: persons });
   }
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({ showPersons: !doesShow })
+    this.setState({ showPersons: !doesShow });
   }
 
   render() {
-
     const style = {
       backgroundColor: 'green',
       color: 'white',
@@ -92,7 +90,6 @@ class App extends Component {
       classes.push('bold'); // classes = ['red', 'bold']
     }
 
-
     return (
       <StyleRoot>
         <div className="App">
@@ -100,7 +97,7 @@ class App extends Component {
           <p className={classes.join(' ')}>This is really working!</p>
           <button
             style={style}
-            onClick={this.togglePersonsHandler}>Switch Name</button>
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {persons}
         </div>
       </StyleRoot>
